@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">    
+    <title>Document</title>
+</head>
+
+<script type="text/javascript">
+    
+    function mostrarImagem(){
+
+    if(document.getElementById("sexoM").checked == true){
+
+        document.getElementById("sMas").style.display = "block";
+        document.getElementById("sFem").style.display = "none";
+    }
+    else {
+        document.getElementById("sFem").style.display = "block";
+        document.getElementById("sMas").style.display = "none";
+    }
+    if(document.getElementById("sexoM").checked == true){
+        sexo = "Masculino"
+    }
+    else {
+        sexo = "Feminino"
+    }
+
+}
+//----------------------------------------------------------------------Nova função -----------------------------------------------------------------
+    function objetoPessoa(){
+
+
+    pessoaObjeto = {nome: document.getElementById("nome").value, 
+    		email: document.getElementById("email").value, 
+    		telefone: document.getElementById("tele").value, 
+    		cpf: document.getElementById("cpf").value ,
+    		sexo: sexo, 
+    		estado: document.getElementById("estado").value, 
+    		endereco: document.getElementById("endereco").value};
+
+    for(i in pessoaObjeto)
+			{
+				alert(pessoaObjeto[i]);
+			}
+
+    return confirm("Deseja fazer o cadastro?")  
+    
+    }
+
+</script>
+<body>
+    <div style="width: 25%;">
+    <h1>Cadastro de Cliente</h1>
+    <img src="https://cdn.icon-icons.com/icons2/621/PNG/512/business-woman-2_icon-icons.com_56996.png" id="sFem" alt="" width="100px" height="100px" style="position: absolute; left: 300px; top: 100px; display: none;"  >
+    <img src="https://cdn.icon-icons.com/icons2/621/PNG/512/business-man-1_icon-icons.com_57000.png" id="sMas" alt="" width="100px" height="100px" style="position: absolute; left: 300px; top: 100px; display: none;">
+
+    <form onsubmit="return objetoPessoa()">
+       Nome: <input type="text" name="nome" id="nome" required="required" pattern=".{1,80}"><br>
+
+
+       E-mail: <input type="email" name="email" id="email" required="required" pattern=".{1,100}"><br>
+
+
+       Telefone:<input type="text" name="tele" id="tele" required="required" pattern="[0-9]{8,9}"><br>
+
+
+       CPF: <input type="text" name="cpf" id="cpf" required="required" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"> <br>
+
+
+       Sexo: <input type="radio" name="sexo" id="sexoM" value="Masculino" required="required" onclick="mostrarImagem()">
+             <label for="sexoM">Masculino</label>  
+             <input type="radio" name="sexo" id="sexoF" value="Feminino" required="required" onclick="mostrarImagem()">
+             <label for="sexoF">Feminino</label><br>
+
+
+       Estado: <select name="estado" id="estado" required="required">
+               <option value="SC">Santa Catarina</option>   
+               <option value="SP">São Paulo</option>
+               <option value="RJ">Rio de Janeiro</option> 
+               <option value="RS">Rio Grande do Sul</option> 
+               <option value="MG">Minas Gerais</option>
+               </select><br> 
+
+               
+        <div>
+        <span style="float: left;">Endereço:</span>
+        <textarea name="endereco" id="endereco" required="required"  minlength="10" maxlength="100"></textarea>
+        </div><br>
+
+
+        <input type="submit" name="sub" id="sub">
+    </form>
+    </div>
+
+
+
+
+</body>
+</html>
